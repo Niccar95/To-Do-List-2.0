@@ -10,8 +10,6 @@ const newList = document.querySelector("ul");
 
 let taskList: string[] = JSON.parse(localStorage.getItem("tasks") ?? "[]");
 
-createHtml(newList, taskList);
-
 listForm?.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -22,10 +20,11 @@ listForm?.addEventListener("submit", (e) => {
     console.log(taskList);
     localStorage.setItem("tasks", JSON.stringify(taskList));
 
-    const listItem = document.createElement("li");
-    newList?.appendChild(listItem);
+    if (newList) {
+      newList.innerHTML = "";
+    }
 
-    listItem.innerHTML = taskInputValue;
+    createHtml(newList, taskList);
     taskInput.value = "";
   } else {
     alert("No task added!");
@@ -33,3 +32,5 @@ listForm?.addEventListener("submit", (e) => {
 });
 
 taskList = JSON.parse(localStorage.getItem("tasks") ?? "[]");
+
+createHtml(newList, taskList);
