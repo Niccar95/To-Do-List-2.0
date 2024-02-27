@@ -1,5 +1,5 @@
 export function createHtml(newList: Element | null, taskList: string[]) {
-  taskList.forEach((task) => {
+  taskList.forEach((task, i) => {
     const listItem = document.createElement("li");
     const removeButton = document.createElement("button");
     listItem.classList.add("listItem");
@@ -8,7 +8,7 @@ export function createHtml(newList: Element | null, taskList: string[]) {
 
     const checkButton = document.createElement("button");
     checkButton.classList.add("checkButton");
-    checkButton.innerHTML = "check";
+    checkButton.innerHTML = "&#9745;";
 
     const buttonContainer = document.createElement("section");
     buttonContainer.classList.add("buttonContainer");
@@ -19,5 +19,26 @@ export function createHtml(newList: Element | null, taskList: string[]) {
     listItem.appendChild(buttonContainer);
     buttonContainer.appendChild(removeButton);
     buttonContainer.appendChild(checkButton);
+
+    removeButton.addEventListener("click", () => {
+      listItem.remove();
+
+      taskList.splice(i, 1);
+
+      localStorage.setItem("tasks", JSON.stringify(taskList));
+    });
+
+    checkButton.addEventListener("click", () => {
+      const index = taskList.indexOf(task);
+      if (index !== -1) {
+        taskList[index] = "Done!";
+      }
+
+      listItem.childNodes[0].nodeValue = "Done!";
+
+      checkButton.disabled = true;
+
+      localStorage.setItem("tasks", JSON.stringify(taskList));
+    });
   });
 }
