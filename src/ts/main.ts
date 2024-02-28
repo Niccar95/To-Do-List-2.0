@@ -1,5 +1,6 @@
 import { createHtml } from "./createHtml";
-import "./style.scss";
+import { Tasks } from "./models/tasks";
+import "../style.scss";
 
 //const listSection = document.getElementById("listSection");
 const listForm = document.querySelector(".listForm");
@@ -8,7 +9,7 @@ const taskInput = document.querySelector(".taskInput") as HTMLInputElement;
 //const taskSection = document.getElementById("taskSection");
 const newList = document.querySelector("ul");
 
-let taskList: string[] = JSON.parse(localStorage.getItem("tasks") ?? "[]");
+let taskList: Tasks[] = JSON.parse(localStorage.getItem("tasks") ?? "[]");
 
 listForm?.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -16,9 +17,11 @@ listForm?.addEventListener("submit", (e) => {
   const taskInputValue = taskInput?.value.trim();
 
   if (taskInputValue.trim() !== "") {
-    taskList.push(taskInputValue);
-    console.log(taskList);
+    const newTask = new Tasks(taskInputValue, false);
+    taskList.push(newTask);
     localStorage.setItem("tasks", JSON.stringify(taskList));
+
+    console.log(taskList);
 
     if (newList) {
       newList.innerHTML = "";

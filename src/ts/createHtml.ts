@@ -1,4 +1,6 @@
-export function createHtml(newList: Element | null, taskList: string[]) {
+import { Tasks } from "./models/tasks";
+
+export function createHtml(newList: Element | null, taskList: Tasks[]) {
   taskList.forEach((task, i) => {
     const listItem = document.createElement("li");
     const removeButton = document.createElement("button");
@@ -13,7 +15,7 @@ export function createHtml(newList: Element | null, taskList: string[]) {
     const buttonContainer = document.createElement("section");
     buttonContainer.classList.add("buttonContainer");
 
-    listItem.innerHTML = task;
+    listItem.innerHTML = task.task;
 
     newList?.appendChild(listItem);
     listItem.appendChild(buttonContainer);
@@ -24,19 +26,32 @@ export function createHtml(newList: Element | null, taskList: string[]) {
       listItem.remove();
 
       taskList.splice(i, 1);
+      console.log(taskList);
 
       localStorage.setItem("tasks", JSON.stringify(taskList));
     });
 
+    if (task.done === true) {
+      //checkButton.remove();
+      listItem.childNodes[0].nodeValue = "Done!";
+      console.log(task);
+    }
+
     checkButton.addEventListener("click", () => {
       const index = taskList.indexOf(task);
+      console.log(index);
+
       if (index !== -1) {
-        taskList[index] = "Done!";
+        if (taskList[index].done) {
+          listItem.childNodes[0].nodeValue = task.task;
+          taskList[index].done = false;
+          checkButton.innerHTML = "&#x2610";
+        } else {
+          listItem.childNodes[0].nodeValue = "Done!"; // Display
+          taskList[index].done = true;
+          checkButton.innerHTML = "&#9745;";
+        }
       }
-
-      listItem.childNodes[0].nodeValue = "Done!";
-
-      checkButton.disabled = true;
 
       localStorage.setItem("tasks", JSON.stringify(taskList));
     });
