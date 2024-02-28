@@ -34,7 +34,10 @@ export function createHtml(newList: Element | null, taskList: Tasks[]) {
     if (task.done === true) {
       //checkButton.remove();
       listItem.childNodes[0].nodeValue = "Done!";
+      checkButton.innerHTML = "&#9745;";
       console.log(task);
+    } else {
+      checkButton.innerHTML = "&#x2610";
     }
 
     checkButton.addEventListener("click", () => {
