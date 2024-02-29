@@ -1,0 +1,137 @@
+@use "breakpoints";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+  gap: 2em;
+
+  @include breakpoints.desktop() {
+    gap: 3em;
+  }
+
+  #header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 100px;
+  }
+
+  #createListSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 80%;
+    height: 200px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+
+    @include breakpoints.desktop() {
+      width: 50%;
+    }
+
+    .inputContainer {
+      position: relative;
+
+      .taskInput {
+        padding: 0.5em;
+        width: 250px;
+        border: solid 0.5px black;
+      }
+    }
+
+    .submitButton {
+      height: 100%;
+      padding: 0.5em;
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: #f15156;
+      color: white;
+      border: none;
+      border: solid 0.5px black;
+    }
+  }
+
+  #taskSection {
+    width: 80%;
+    height: 250px;
+    padding: 1em;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    @include breakpoints.desktop() {
+      width: 50%;
+      height: 300px;
+    }
+
+    .newList {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7em;
+      overflow-y: auto;
+      width: 100%;
+      height: 100%;
+      padding: 1em 1em;
+      list-style: none;
+      box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.1);
+
+      @include breakpoints.desktop() {
+        width: 100%;
+        font-size: 1.2em;
+      }
+
+      .listItem {
+        display: flex;
+        flex-grow: unset;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1em;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+
+        .buttonContainer {
+          display: flex;
+          gap: 0.5em;
+
+          .checkButton {
+            width: 30px;
+            height: 30px;
+            background-color: #f15156;
+            color: white;
+            border: none;
+            border: solid 0.5px black;
+            font-size: 1em;
+            cursor: pointer;
+            @include breakpoints.desktop() {
+              width: 50px;
+              height: 50px;
+            }
+          }
+
+          .removeButton {
+            width: 30px;
+            height: 30px;
+            background-color: #f15156;
+            color: white;
+            border: none;
+            border: solid 0.5px black;
+            font-size: 1em;
+            cursor: pointer;
+            @include breakpoints.desktop() {
+              width: 50px;
+              height: 50px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

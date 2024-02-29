@@ -1,4 +1,4 @@
-import { Tasks } from "./models/tasks";
+import { Tasks } from "./models/Tasks";
 
 export function createHtml(newList: Element | null, taskList: Tasks[]) {
   taskList.forEach((task, i) => {
@@ -6,7 +6,7 @@ export function createHtml(newList: Element | null, taskList: Tasks[]) {
     const removeButton = document.createElement("button");
     listItem.classList.add("listItem");
     removeButton.classList.add("removeButton");
-    removeButton.innerHTML = "X";
+    removeButton.innerHTML = "x";
 
     const checkButton = document.createElement("button");
     checkButton.classList.add("checkButton");

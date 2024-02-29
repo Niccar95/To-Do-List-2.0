@@ -9,11 +9,19 @@
     <section id="header">
       <h1 class="headerTitle">To-Do List 2.0</h1>
     </section>
-    <section id="listSection">
+    <section id="createListSection">
       <h2 class="listTitle">Create a To-Do List</h2>
       <form type="submit" class="listForm">
-        <input class="taskInput" type="text" />
-        <button class="submitButton" type="submit">Add task</button>
+        <section class="inputContainer">
+          <input
+            class="taskInput"
+            type="text"
+            placeholder="Enter your task"
+            maxlength="35"
+            autofocus
+          />
+          <button class="submitButton" type="submit">Add task</button>
+        </section>
       </form>
     </section>
 

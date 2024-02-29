@@ -1,12 +1,9 @@
 import { createHtml } from "./createHtml";
-import { Tasks } from "./models/tasks";
-import "../style.scss";
+import { Tasks } from "./models/Tasks";
+import "../scss/style.scss";
 
-//const listSection = document.getElementById("listSection");
 const listForm = document.querySelector(".listForm");
 const taskInput = document.querySelector(".taskInput") as HTMLInputElement;
-//const submitButton = document.getElementById("submitButton");
-//const taskSection = document.getElementById("taskSection");
 const newList = document.querySelector("ul");
 
 let taskList: Tasks[] = JSON.parse(localStorage.getItem("tasks") ?? "[]");
