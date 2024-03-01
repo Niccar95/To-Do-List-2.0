@@ -1,7 +1,7 @@
 import { Tasks } from "./models/Tasks";
 
 export function createHtml(newList: Element | null, taskList: Tasks[]) {
-  taskList.forEach((task, i) => {
+  taskList.forEach((task) => {
     const listItem = document.createElement("li");
     const removeButton = document.createElement("button");
     listItem.classList.add("listItem");
@@ -19,20 +19,21 @@ export function createHtml(newList: Element | null, taskList: Tasks[]) {
 
     newList?.appendChild(listItem);
     listItem.appendChild(buttonContainer);
-    buttonContainer.appendChild(removeButton);
-    buttonContainer.appendChild(checkButton);
 
+    buttonContainer.appendChild(checkButton);
+    buttonContainer.appendChild(removeButton);
     removeButton.addEventListener("click", () => {
       listItem.remove();
 
-      taskList.splice(i, 1);
+      const index = taskList.indexOf(task);
+
+      if (index !== -1) taskList.splice(index, 1);
       console.log(taskList);
 
       localStorage.setItem("tasks", JSON.stringify(taskList));
     });
 
     if (task.done === true) {
-      //checkButton.remove();
       listItem.childNodes[0].nodeValue = "Done!";
       checkButton.innerHTML = "&#9745;";
       console.log(task);
