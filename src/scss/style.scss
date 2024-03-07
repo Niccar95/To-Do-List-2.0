@@ -17,9 +17,6 @@ body {
   height: 100vh;
   gap: 2em;
   background: linear-gradient(45deg, #a5402d, #ffc07f, #a5402d);
-  @include breakpoints.desktop() {
-    gap: 3em;
-  }
 
   #header {
     display: flex;
@@ -189,6 +186,20 @@ body {
           }
         }
       }
+    }
+  }
+  .clearAllButton {
+    width: 30%;
+    padding: 0.5em;
+    top: 0;
+    right: 0;
+    background-color: #f15156;
+    color: white;
+    border: solid 0.5px black;
+    cursor: pointer;
+    @include breakpoints.desktop() {
+      width: 10%;
+      font-size: 1em;
     }
   }
 }
