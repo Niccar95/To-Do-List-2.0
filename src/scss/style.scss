@@ -15,8 +15,11 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  gap: 2em;
+  gap: 1em;
   background: linear-gradient(45deg, #a5402d, #ffc07f, #a5402d);
+  @include breakpoints.desktop() {
+    gap: 1.5em;
+  }
 
   #header {
     display: flex;
@@ -108,6 +111,7 @@ body {
         background-color: #f15156;
         color: white;
         border: solid 0.5px black;
+
         border-left: none;
         cursor: pointer;
         @include breakpoints.desktop() {
@@ -119,14 +123,32 @@ body {
   }
 
   #taskSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 80%;
-    height: 300px;
+    height: 350px;
     padding: 1em;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
     background-color: #a5402d;
     @include breakpoints.desktop() {
       width: 50%;
-      height: 350px;
+      height: 370px;
+    }
+
+    .sortButton {
+      width: 20%;
+      padding: 0.5em;
+      top: 0;
+      right: 0;
+      background-color: #f15156;
+      color: white;
+      border: solid 0.5px black;
+      cursor: pointer;
+      @include breakpoints.desktop() {
+        width: 10%;
+        font-size: 1em;
+      }
     }
 
     .newList {
@@ -135,7 +157,7 @@ body {
       gap: 0.7em;
       overflow-y: auto;
       width: 100%;
-      height: 100%;
+      height: 85%;
       padding: 1em 1em;
       list-style: none;
       box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.3);
@@ -196,6 +218,7 @@ body {
     background-color: #f15156;
     color: white;
     border: solid 0.5px black;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     @include breakpoints.desktop() {
       width: 10%;

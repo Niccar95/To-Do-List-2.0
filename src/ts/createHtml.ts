@@ -22,6 +22,7 @@ export function createHtml(newList: Element | null, taskList: Tasks[]) {
 
     buttonContainer.appendChild(checkButton);
     buttonContainer.appendChild(removeButton);
+
     removeButton.addEventListener("click", () => {
       listItem.remove();
 

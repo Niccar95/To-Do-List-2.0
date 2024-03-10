@@ -33,4 +33,14 @@ listForm?.addEventListener("submit", (e) => {
 
 taskList = JSON.parse(localStorage.getItem("tasks") ?? "[]");
 
+const clearAllButton = document.querySelector(".clearAllButton");
+
+clearAllButton?.addEventListener("click", () => {
+  if (newList) {
+    newList.innerHTML = "";
+    taskList = []; // Clear the taskList
+    localStorage.setItem("tasks", JSON.stringify(taskList));
+  }
+});
+
 createHtml(newList, taskList);
