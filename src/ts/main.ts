@@ -35,6 +35,26 @@ taskList = JSON.parse(localStorage.getItem("tasks") ?? "[]");
 
 const clearAllButton = document.querySelector(".clearAllButton");
 
+const sortTasks = document.querySelector(".sortTasks") as HTMLSelectElement;
+
+sortTasks?.addEventListener("click", () => {
+  let selectedValue = sortTasks.value;
+
+  if (selectedValue === "Done") {
+    taskList.sort((a, b) => (a.done === b.done ? 0 : a.done ? -1 : 1));
+  } else if (selectedValue === "Pending") {
+    taskList.sort((a, b) => (a.done === b.done ? 0 : a.done ? 1 : -1));
+  }
+
+  localStorage.setItem("tasks", JSON.stringify(taskList));
+
+  if (newList) {
+    newList.innerHTML = "";
+  }
+
+  createHtml(newList, taskList);
+});
+
 clearAllButton?.addEventListener("click", () => {
   if (newList) {
     newList.innerHTML = "";

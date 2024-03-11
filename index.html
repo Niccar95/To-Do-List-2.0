@@ -23,7 +23,14 @@
     </section>
 
     <section id="taskSection">
-      <button class="sortButton">Sort</button>
+      <section class="sortSection">
+        <label class="sortLabel" for="sort">Sort by: </label>
+        <select name="Sort By" id="sort" class="sortTasks">
+          <option value="Done">Done</option>
+          <option value="Pending">Pending</option>
+        </select>
+      </section>
+
       <ul class="newList"></ul>
     </section>
 

@@ -136,18 +136,28 @@ body {
       height: 370px;
     }
 
-    .sortButton {
-      width: 20%;
-      padding: 0.5em;
-      top: 0;
-      right: 0;
-      background-color: #f15156;
-      color: white;
-      border: solid 0.5px black;
-      cursor: pointer;
-      @include breakpoints.desktop() {
-        width: 10%;
-        font-size: 1em;
+    .sortSection {
+      display: flex;
+      align-items: center;
+      gap: 1em;
+
+      .sortLabel {
+        color: white;
+      }
+
+      .sortTasks {
+        width: 35%;
+        padding: 0.5em;
+        top: 0;
+        right: 0;
+        background-color: #f15156;
+        color: white;
+        border: solid 0.5px black;
+        cursor: pointer;
+        @include breakpoints.desktop() {
+          width: 15%;
+          font-size: 1em;
+        }
       }
     }
 
