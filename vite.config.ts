@@ -6,4 +6,7 @@ export default {
       typescript: true,
     }),
   ],
+  build: {
+    assetsDir: "assets",
+  },
 };
